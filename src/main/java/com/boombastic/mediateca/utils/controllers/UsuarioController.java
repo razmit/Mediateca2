@@ -4,10 +4,12 @@ import com.boombastic.mediateca.utils.dtos.UsuarioDto;
 import com.boombastic.mediateca.utils.models.Usuario;
 import com.boombastic.mediateca.utils.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -40,6 +42,20 @@ public class UsuarioController {
     public String saveUsuario(@ModelAttribute("usuario") Usuario usuario) {
 
         usuarioService.saveUsuario(usuario);
+        return "redirect:/usuarios";
+    }
+
+    @GetMapping("usuarios/{usuarioId}/edit")
+    public String editUsuarioForm(@PathVariable("usuarioId") Long usuarioId, Model model) {
+        UsuarioDto usuarioDto = usuarioService.findUsuarioById(usuarioId);
+        model.addAttribute("usuarioDto", usuarioDto);
+        return "usuarios-edit";
+    }
+
+    @PostMapping("usuarios/{usuarioId}/edit")
+    public String updateUsuario(@PathVariable("usuarioId") Long usuarioId, @ModelAttribute("usuario") UsuarioDto usuarioDto){
+        usuarioDto.setId(usuarioId);
+        usuarioService.updateUsuario(usuarioDto);
         return "redirect:/usuarios";
     }
 

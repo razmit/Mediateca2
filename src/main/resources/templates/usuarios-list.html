@@ -18,10 +18,11 @@
                 <p class="lead fw-normal text-muted mb-0">Company portfolio</p>
             </div>
             <div class="row gx-5">
-                <div th:each="usuario :${usuarios}" class="col-lg-6">
+                <div th:each="usuario :${usuarios}" class="col-lg-6 mb-2">
                     <div class="position-relative mb-5">
                         <a th:text="${usuario.nombreUsuario}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
+                    <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}/edit(usuarioId=${usuario.id})}">Editar</a>
                 </div>
             </div>
         </div>

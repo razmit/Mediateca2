@@ -30,6 +30,32 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    @Override
+    public UsuarioDto findUsuarioById(Long id) {
+        Usuario usuario = usuarioRepository.findById(id).get();
+        return mapToUserDto(usuario);
+    }
+
+    @Override
+    public void updateUsuario(UsuarioDto dto) {
+        Usuario usuario = mapToUser(dto);
+        usuarioRepository.save(usuario);
+    }
+
+    public Usuario mapToUser(UsuarioDto usuario){
+            Usuario usuarioDto = Usuario.builder()
+                    .id(usuario.getId())
+                    .nombreUsuario(usuario.getNombreUsuario())
+                    .codigoUsuario(usuario.getCodigoUsuario())
+                    .contrasena(usuario.getContrasena())
+                    .tiempoMora(usuario.getTiempoMora())
+                    .cantidadMora(usuario.getCantidadMora())
+                    .tipoUsuario(usuario.getTipoUsuario())
+                    .build();
+
+            return usuarioDto;
+    }
+
     public UsuarioDto mapToUserDto(Usuario usuario) {
 
         UsuarioDto usuarioDto = UsuarioDto.builder()
