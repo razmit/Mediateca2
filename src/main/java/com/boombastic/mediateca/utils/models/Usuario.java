@@ -1,10 +1,7 @@
 package com.boombastic.mediateca.utils.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @NoArgsConstructor
@@ -16,10 +13,11 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_usuario;
-    private String nombre_usuario;
-    private String codigo_usuario;
-    private int tiempo_mora;
-    private int cantidad_mora;
-    private String tipo_usuario;
+    private Long id;
+    @NonNull
+    private String nombreUsuario;
+    private String codigoUsuario;
+    private int tiempoMora;
+    private int cantidadMora;
+    private String tipoUsuario;
 }
