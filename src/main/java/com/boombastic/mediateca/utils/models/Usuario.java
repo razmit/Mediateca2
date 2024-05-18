@@ -17,6 +17,8 @@ public class Usuario {
     @NonNull
     private String nombreUsuario;
     private String codigoUsuario;
+    @NonNull
+    private String contrasena;
     private int tiempoMora;
     private int cantidadMora;
     private String tipoUsuario;

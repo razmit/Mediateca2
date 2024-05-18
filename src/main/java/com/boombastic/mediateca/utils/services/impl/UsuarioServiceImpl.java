@@ -25,12 +25,18 @@ public class UsuarioServiceImpl implements UsuarioService {
         return usuarios.stream().map((usuario) -> mapToUserDto(usuario)).collect(Collectors.toList());
     }
 
+    @Override
+    public Usuario saveUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
     public UsuarioDto mapToUserDto(Usuario usuario) {
 
         UsuarioDto usuarioDto = UsuarioDto.builder()
                 .id(usuario.getId())
                 .nombreUsuario(usuario.getNombreUsuario())
                 .codigoUsuario(usuario.getCodigoUsuario())
+                .contrasena(usuario.getContrasena())
                 .tiempoMora(usuario.getTiempoMora())
                 .cantidadMora(usuario.getCantidadMora())
                 .tipoUsuario(usuario.getTipoUsuario())

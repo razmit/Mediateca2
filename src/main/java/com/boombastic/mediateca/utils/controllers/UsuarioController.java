@@ -1,11 +1,14 @@
 package com.boombastic.mediateca.utils.controllers;
 
 import com.boombastic.mediateca.utils.dtos.UsuarioDto;
+import com.boombastic.mediateca.utils.models.Usuario;
 import com.boombastic.mediateca.utils.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -24,6 +27,20 @@ public class UsuarioController {
         List<UsuarioDto> usuarios = usuarioService.listAllUsers();
         model.addAttribute("usuarios", usuarios);
         return "usuarios-list";
+    }
+
+    @GetMapping("/usuarios/new")
+    public String createUsuarioForm(Model model) {
+        Usuario usuario = new Usuario();
+        model.addAttribute("usuario", usuario);
+        return "usuarios-create";
+    }
+
+    @PostMapping("usuarios/new")
+    public String saveUsuario(@ModelAttribute("usuario") Usuario usuario) {
+
+        usuarioService.saveUsuario(usuario);
+        return "redirect:/usuarios";
     }
 
 }
