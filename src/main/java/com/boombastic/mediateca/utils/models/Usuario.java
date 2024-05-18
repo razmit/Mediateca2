@@ -1,6 +1,8 @@
 package com.boombastic.mediateca.utils.models;
 
+import com.github.fashionbrot.annotation.NotBlank;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Data
@@ -14,10 +16,8 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NonNull
     private String nombreUsuario;
     private String codigoUsuario;
-    @NonNull
     private String contrasena;
     private int tiempoMora;
     private int cantidadMora;

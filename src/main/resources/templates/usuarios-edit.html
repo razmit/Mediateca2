@@ -18,27 +18,33 @@
         <div class="col-md-6">
           <label for="inputNombreUsuario" class="form-label">Nombre de usuario</label>
           <input type="text" name="nombreUsuario" th:field="*{nombreUsuario}" class="form-control" id="inputNombreUsuario">
+          <p th:if="${#fields.hasErrors('nombreUsuario')}" class="text-danger" th:errors="*{nombreUsuario}"></p>
         </div>
         <div class="col-md-6">
           <label for="inputCodigo" class="form-label">Codigo</label>
           <input type="text" name="codigoUsuario" th:field="*{codigoUsuario}" class="form-control" id="inputCodigo">
+          <p th:if="${#fields.hasErrors('codigoUsuario')}" class="text-danger" th:errors="*{codigoUsuario}"></p>
         </div>
         <div class="col-md-6">
           <label for="inputContrasena" class="form-label">Contraseña</label>
           <input type="password" name="contrasena" th:field="*{contrasena}" class="form-control" id="inputContrasena">
+          <p th:if="${#fields.hasErrors('contrasena')}" class="text-danger" th:errors="*{contrasena}"></p>
         </div>
         <div class="col-12">
           <label for="inputMora" class="form-label">Cantidad de mora</label>
           <input type="number" name="cantidadMora" th:field="*{cantidadMora}" class="form-control" id="inputMora">
+          <p th:if="${#fields.hasErrors('cantidadMora')}" class="text-danger" th:errors="*{cantidadMora}"></p>
         </div>
         <div class="col-12">
           <label for="inputTiempoMora" class="form-label">Tiempo de mora</label>
           <input type="text" name="tiempoMora" th:field="*{tiempoMora}" class="form-control" id="inputTiempoMora" placeholder="Moroso">
+          <p th:if="${#fields.hasErrors('tiempoMora')}" class="text-danger" th:errors="*{tiempoMora}"></p>
         </div>
         <div class="col-md-4">
           <div class="col-12">
             <label for="inputTipoUsuario" class="form-label">Tiempo de usuario</label>
             <input type="text" name="tipoUsuario" th:field="*{tipoUsuario}" class="form-control" id="inputTipoUsuario" placeholder="Moroso">
+            <p th:if="${#fields.hasErrors('tipoUsuario')}" class="text-danger" th:errors="*{tipoUsuario}"></p>
           </div>
           <!--                    <label for="inputTipoUsuario" class="form-label">Tipo de usuario</label>-->
           <!--                    <select id="inputTipoUsuario" name="tipoUsuario" th:field="*{tipoUsuario}" class="form-select">-->
@@ -48,7 +54,7 @@
           <!--                    </select>-->
         </div>
         <div class="col-12">
-          <button type="submit" class="btn btn-primary">Crear usuario</button>
+          <button type="submit" class="btn btn-primary">Editar usuario</button>
         </div>
       </form>
     </div>

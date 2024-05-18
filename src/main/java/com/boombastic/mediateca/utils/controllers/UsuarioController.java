@@ -3,10 +3,12 @@ package com.boombastic.mediateca.utils.controllers;
 import com.boombastic.mediateca.utils.dtos.UsuarioDto;
 import com.boombastic.mediateca.utils.models.Usuario;
 import com.boombastic.mediateca.utils.services.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,8 +55,15 @@ public class UsuarioController {
     }
 
     @PostMapping("usuarios/{usuarioId}/edit")
-    public String updateUsuario(@PathVariable("usuarioId") Long usuarioId, @ModelAttribute("usuario") UsuarioDto usuarioDto){
+    public String updateUsuario(@PathVariable("usuarioId") Long usuarioId,
+                                @Valid @ModelAttribute("usuario") UsuarioDto usuarioDto,
+                                BindingResult result,
+                                Model model){
         usuarioDto.setId(usuarioId);
+        if (result.hasErrors()) {
+            return "usuarios-edit";
+        }
+
         usuarioService.updateUsuario(usuarioDto);
         return "redirect:/usuarios";
     }
