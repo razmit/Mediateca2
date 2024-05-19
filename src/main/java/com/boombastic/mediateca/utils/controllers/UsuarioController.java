@@ -6,6 +6,7 @@ import com.boombastic.mediateca.utils.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
+import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,6 +32,13 @@ public class UsuarioController {
         List<UsuarioDto> usuarios = usuarioService.listAllUsers();
         model.addAttribute("usuarios", usuarios);
         return "usuarios-list";
+    }
+
+    @GetMapping("/usuarios/{usuarioId}")
+    public String usuarioDetail(@PathVariable("usuarioId") Long usuarioId, Model model){
+        UsuarioDto usuarioDto = usuarioService.findUsuarioById(usuarioId);
+        model.addAttribute("usuario", usuarioDto);
+        return "usuario-detail";
     }
 
     @GetMapping("/usuarios/new")
@@ -59,13 +67,20 @@ public class UsuarioController {
                                 @Valid @ModelAttribute("usuario") UsuarioDto usuarioDto,
                                 BindingResult result,
                                 Model model){
-        usuarioDto.setId(usuarioId);
+
         if (result.hasErrors()) {
+            usuarioDto = usuarioService.findUsuarioById(usuarioId);
+            model.addAttribute("usuarioDto", usuarioDto);
             return "usuarios-edit";
         }
-
+        usuarioDto.setId(usuarioId);
         usuarioService.updateUsuario(usuarioDto);
         return "redirect:/usuarios";
     }
 
+    @GetMapping("usuarios/{usuarioId}/delete")
+    public String deleteUsuario(@PathVariable("usuarioId") Long usuarioId) {
+        usuarioService.delete(usuarioId);
+        return "redirect:/usuarios";
+    }
 }

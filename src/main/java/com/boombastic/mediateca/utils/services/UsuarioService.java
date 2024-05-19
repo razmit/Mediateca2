@@ -13,4 +13,6 @@ public interface UsuarioService {
     UsuarioDto findUsuarioById(Long usuarioId);
 
     void updateUsuario(UsuarioDto usuarioDto);
+
+    void delete(Long usuarioId);
 }

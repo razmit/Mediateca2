@@ -1,6 +1,5 @@
 package com.boombastic.mediateca.utils.models;
 
-import com.github.fashionbrot.annotation.NotBlank;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;

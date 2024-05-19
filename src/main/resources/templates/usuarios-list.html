@@ -23,6 +23,7 @@
                         <a th:text="${usuario.nombreUsuario}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
                     <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}/edit(usuarioId=${usuario.id})}">Editar</a>
+                    <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}(usuarioId=${usuario.id})}">Detalles</a>
                 </div>
             </div>
         </div>

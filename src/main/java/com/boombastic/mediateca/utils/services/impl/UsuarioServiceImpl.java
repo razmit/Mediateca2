@@ -42,6 +42,11 @@ public class UsuarioServiceImpl implements UsuarioService {
         usuarioRepository.save(usuario);
     }
 
+    @Override
+    public void delete(Long usuarioId) {
+        usuarioRepository.deleteById(usuarioId);
+    }
+
     public Usuario mapToUser(UsuarioDto usuario){
             Usuario usuarioDto = Usuario.builder()
                     .id(usuario.getId())

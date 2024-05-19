@@ -10,9 +10,9 @@ public class UsuarioDto {
     private Long id;
     @NotEmpty(message = "Llene el form de nombre de usuario")
     private String nombreUsuario;
-    @NotEmpty(message = "Llene el form de nombre de usuario")
+    @NotEmpty(message = "Llene el form de nombre de codigo")
     private String codigoUsuario;
-    @NotEmpty(message = "Llene el form de nombre de usuario")
+    @NotEmpty(message = "Llene el form de nombre de contrasena")
     private String contrasena;
     private int tiempoMora;
     private int cantidadMora;
