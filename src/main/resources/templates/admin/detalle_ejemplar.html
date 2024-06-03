@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle del Ejemplar - Mediateca</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container py-5">
+    <h1 class="display-4" th:text="${ejemplar.titulo}">Título del Ejemplar</h1>
+    <p class="lead" th:text="${ejemplar.autor}">Autor</p>
+    <p th:text="${ejemplar.descripcion}">Descripción del Ejemplar</p>
+    <a th:href="@{/static}" class="btn btn-primary">Volver a Inicio</a>
+</div>
+</body>
+</html>

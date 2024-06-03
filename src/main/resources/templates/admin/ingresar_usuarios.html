@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingresar Usuarios y Asignar Privilegios</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="fw-bolder text-center mb-4">Ingresar Usuarios y Asignar Privilegios</h2>
+    <form action="#" th:action="@{/encargados/ingresar-usuarios}" th:object="${usuario}" method="post">
+        <div class="form-group">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" th:field="*{nombre}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" th:field="*{apellido}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="usuario" class="form-label">Usuario:</label>
+            <input type="text" id="usuario" name="usuario" th:field="*{usuario}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="codigoUsuario" class="form-label">Código Usuario:</label>
+            <input type="text" id="codigoUsuario" name="codigoUsuario" th:field="*{codigoUsuario}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="tipo" class="form-label">Tipo de Usuario:</label>
+            <select id="tipo" name="tipo" th:field="*{tipo}" class="form-control" required>
+                <option value="administrador">Administrador</option>
+                <option value="profesor">Profesor</option>
+                <option value="alumno">Alumno</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="contrasena" class="form-label">Contraseña:</label>
+            <input type="password" id="contrasena" name="contrasena" th:field="*{contrasena}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="cantidadMora" class="form-label">Cantidad Mora:</label>
+            <input type="number" id="cantidadMora" name="cantidadMora" th:field="*{cantidadMora}" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="tiempoMora" class="form-label">Tiempo Mora:</label>
+            <input type="text" id="tiempoMora" name="tiempoMora" th:field="*{tiempoMora}" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Usuario</button>
+    </form>
+</div>
+</body>
+</html>
+
