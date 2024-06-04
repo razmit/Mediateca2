@@ -8,5 +8,6 @@ import lombok.Data;
 public class DocumentoMateriaDto {
 
     private Long id;
+    private Long idDocumento;
     private Long idMateria;
 }

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,10 +18,10 @@ public class Revista {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idRevista;
     private Long idDocumento;
     private String issn;
     private String editorial;
     private String periodicidad;
-    private int fechaPublicacion;
+    private LocalDate fechaPublicacion;
 }

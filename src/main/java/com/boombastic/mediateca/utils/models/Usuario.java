@@ -1,7 +1,6 @@
 package com.boombastic.mediateca.utils.models;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 @Data
@@ -14,11 +13,11 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idUsuario;
     private String nombreUsuario;
-    private String codigoUsuario;
-    private String contrasena;
-    private int tiempoMora;
-    private int cantidadMora;
     private String tipoUsuario;
+    private String contrasena;
+    private int cantidadMora;
+    private int tiempoMora;
+    private String codigoUsuario;
 }

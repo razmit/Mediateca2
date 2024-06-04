@@ -16,7 +16,7 @@ public class Tesis {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idTesis;
     private Long idDocumento;
     private String directorTesis;
     private String gradoObtenido;

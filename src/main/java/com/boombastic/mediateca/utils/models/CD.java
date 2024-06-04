@@ -16,7 +16,7 @@ public class CD {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idCdAudio;
     private Long idDocumento;
     private String artista;
     private String genero;

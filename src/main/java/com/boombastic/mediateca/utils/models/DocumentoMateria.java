@@ -11,11 +11,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "documentosmaterias")
+@Table(name = "materiasdocumentos")
 public class DocumentoMateria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMateriaDocumento;
+    private Long idDocumento;
     private Long idMateria;
 }

@@ -49,7 +49,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     public Usuario mapToUser(UsuarioDto usuario){
             Usuario usuarioDto = Usuario.builder()
-                    .id(usuario.getId())
+                    .idUsuario(usuario.getId())
                     .nombreUsuario(usuario.getNombreUsuario())
                     .codigoUsuario(usuario.getCodigoUsuario())
                     .contrasena(usuario.getContrasena())
@@ -64,7 +64,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public UsuarioDto mapToUserDto(Usuario usuario) {
 
         UsuarioDto usuarioDto = UsuarioDto.builder()
-                .id(usuario.getId())
+                .id(usuario.getIdUsuario())
                 .nombreUsuario(usuario.getNombreUsuario())
                 .codigoUsuario(usuario.getCodigoUsuario())
                 .contrasena(usuario.getContrasena())

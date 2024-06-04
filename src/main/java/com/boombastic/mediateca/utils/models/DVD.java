@@ -16,7 +16,7 @@ public class DVD {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idDVD;
     private Long idDocumento;
     private String director;
     private String genero;

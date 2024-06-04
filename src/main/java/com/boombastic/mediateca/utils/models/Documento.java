@@ -16,7 +16,7 @@ public class Documento {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idDocumento;
     private Long idTipoDocumento;
     private String titulo;
     private String autor;

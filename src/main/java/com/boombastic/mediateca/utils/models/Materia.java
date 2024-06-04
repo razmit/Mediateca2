@@ -16,6 +16,6 @@ public class Materia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idMateria;
     private String nombre;
 }
