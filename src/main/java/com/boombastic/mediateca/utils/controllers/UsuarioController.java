@@ -48,21 +48,21 @@ public class UsuarioController {
         return "usuarios-create";
     }
 
-    @PostMapping("usuarios/new")
+    @PostMapping("/usuarios/new")
     public String saveUsuario(@ModelAttribute("usuario") Usuario usuario) {
 
         usuarioService.saveUsuario(usuario);
         return "redirect:/usuarios";
     }
 
-    @GetMapping("usuarios/{usuarioId}/edit")
+    @GetMapping("/usuarios/{usuarioId}/edit")
     public String editUsuarioForm(@PathVariable("usuarioId") Long usuarioId, Model model) {
         UsuarioDto usuarioDto = usuarioService.findUsuarioById(usuarioId);
         model.addAttribute("usuarioDto", usuarioDto);
         return "usuarios-edit";
     }
 
-    @PostMapping("usuarios/{usuarioId}/edit")
+    @PostMapping("/usuarios/{usuarioId}/edit")
     public String updateUsuario(@PathVariable("usuarioId") Long usuarioId,
                                 @Valid @ModelAttribute("usuario") UsuarioDto usuarioDto,
                                 BindingResult result,
@@ -78,7 +78,7 @@ public class UsuarioController {
         return "redirect:/usuarios";
     }
 
-    @GetMapping("usuarios/{usuarioId}/delete")
+    @GetMapping("/usuarios/{usuarioId}/delete")
     public String deleteUsuario(@PathVariable("usuarioId") Long usuarioId) {
         usuarioService.delete(usuarioId);
         return "redirect:/usuarios";
