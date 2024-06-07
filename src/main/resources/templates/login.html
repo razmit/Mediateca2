@@ -1,11 +1,44 @@
-<!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+<html
+        xmlns:th="http://thymeleaf.org"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+<link rel="stylesheet" href="../static/css/login.css">
+
 <head>
-    <meta charset="UTF-8">
     <title>Login - Mediateca</title>
 </head>
-<body>
-
-</body>
+<section layout:fragment="body">
+    <div class="main">
+        <div class="col-md-6 col-sm-12">
+            <div th:if="${param.error}" class="alert alert-success">
+                Nombre de usuario o contraseña incorrectos
+            </div>
+            <div th:if="${param.logout}" class="alert alert-success">
+                Sesión terminada</div>
+            <div class="login-form">
+                <form method="post" th:action="@{/login}">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input
+                                id="username"
+                                type="text"
+                                class="form-control"
+                                placeholder="Username"
+                                name="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input
+                                id="password"
+                                type="password"
+                                class="form-control"
+                                placeholder="Password"
+                                name="password">
+                    </div>
+                    <button type="submit" value="Log in" class="btn btn-secondary">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 </html>

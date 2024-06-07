@@ -12,8 +12,8 @@ public class LoginController {
     @Autowired
     public LoginController(UsuarioService usuarioService) {this.usuarioService = usuarioService;}
 
-    @GetMapping("/")
-    public String verifyUser(){
+    @GetMapping("/login")
+    public String loginPage(){
         return "login";
     }
 }

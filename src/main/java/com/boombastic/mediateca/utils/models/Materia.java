@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,4 +21,6 @@ public class Materia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMateria;
     private String nombre;
+    @ManyToMany(mappedBy = "docMateriaList")
+    private List<Documento> documentos = new ArrayList<>();
 }

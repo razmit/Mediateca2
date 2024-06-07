@@ -17,7 +17,9 @@ public class DVD {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDVD;
-    private Long idDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento", nullable = false)
+    private Documento idDocumento;
     private String director;
     private String genero;
     private int duracion;

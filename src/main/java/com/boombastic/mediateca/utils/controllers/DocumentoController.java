@@ -24,10 +24,10 @@ import java.util.List;
 public class DocumentoController {
     private DocumentoService documentoService;
 
-    @Autowired
-    public DocumentoController(DocumentoService documentoService) {
-        this.documentoService = documentoService;
-    }
+//    @Autowired
+//    public DocumentoController(DocumentoService documentoService) {
+//        this.documentoService = documentoService;
+//    }
 
     @GetMapping("/documentos")
     public String listDocumentos(Model model){

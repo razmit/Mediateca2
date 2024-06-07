@@ -10,6 +10,8 @@ public interface UsuarioService {
     List<UsuarioDto> listAllUsers();
     Usuario saveUsuario(Usuario usuario);
 
+    void saveUser(UsuarioDto usuarioDto);
+
     UsuarioDto findUsuarioById(Long usuarioId);
 
     void updateUsuario(UsuarioDto usuarioDto);

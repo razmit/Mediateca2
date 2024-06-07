@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.print.Doc;
 import java.time.LocalDate;
 
 @Data
@@ -19,7 +20,9 @@ public class Revista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idRevista;
-    private Long idDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento", nullable = false)
+    private Documento idDocumento;
     private String issn;
     private String editorial;
     private String periodicidad;

@@ -17,7 +17,9 @@ public class CD {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idCdAudio;
-    private Long idDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento", nullable = false)
+    private Documento idDocumento;
     private String artista;
     private String genero;
     private int duracion;

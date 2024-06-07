@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,7 +20,9 @@ public class Documento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDocumento;
-    private Long idTipoDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idTipoDocumento", nullable = false)
+    private TipoDocumento idTipoDocumento;
     private String titulo;
     private String autor;
     private int anoPublicacion;
@@ -25,4 +30,22 @@ public class Documento {
     private int cantidadDisponible;
     private String estado;
     private String fechaAdquisicion;
+
+    @OneToMany(mappedBy = "idDocumento")
+    private List<CD> cds = new ArrayList<>();
+    @OneToMany(mappedBy = "idDocumento")
+    private List<DVD> dvds = new ArrayList<>();
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Libro> libros = new ArrayList<>();
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Revista> revistas = new ArrayList<>();
+    @OneToMany(mappedBy = "idDocumento")
+    private List<Tesis> teses = new ArrayList<>();
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "documento_materia",
+            joinColumns = {@JoinColumn(name = "doc_id", referencedColumnName = "idDocumento")},
+            inverseJoinColumns = {@JoinColumn(name = "materia_id", referencedColumnName = "idMateria")}
+    )
+    private List<Materia> docMateriaList = new ArrayList<>();
 }

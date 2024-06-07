@@ -17,7 +17,9 @@ public class Tesis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTesis;
-    private Long idDocumento;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento", nullable = false)
+    private Documento idDocumento;
     private String directorTesis;
     private String gradoObtenido;
     private String departamento;

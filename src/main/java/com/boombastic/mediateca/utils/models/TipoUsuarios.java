@@ -6,24 +6,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.print.Doc;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "libro")
-public class Libro {
+@Table(name = "tipousuarios")
+public class TipoUsuarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLibro;
-    @ManyToOne
-    @JoinColumn(name = "idDocumento", nullable = false)
-    private Documento idDocumento;
-    private String isbn;
-    private String editorial;
-    private int numPaginas;
+    private Long idTipoUsuario;
+    private String nombre;
+    @ManyToMany(mappedBy = "tipoUsuariosList")
+    private List<Usuario> usuarios = new ArrayList<>();
 
 }
