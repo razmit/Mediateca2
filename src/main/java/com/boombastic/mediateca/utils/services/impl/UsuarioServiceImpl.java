@@ -7,6 +7,7 @@ import com.boombastic.mediateca.utils.repository.TipoUsuarioRepository;
 import com.boombastic.mediateca.utils.repository.UsuarioRepository;
 import com.boombastic.mediateca.utils.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -18,11 +19,13 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     private UsuarioRepository usuarioRepository;
     private TipoUsuarioRepository tipoUsuarioRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, TipoUsuarioRepository tipoUsuarioRepository) {
+    public UsuarioServiceImpl(UsuarioRepository usuarioRepository, TipoUsuarioRepository tipoUsuarioRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = usuarioRepository;
         this.tipoUsuarioRepository = tipoUsuarioRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -41,10 +44,8 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void saveUser(UsuarioDto usuarioDto) {
         Usuario user = new Usuario();
         user.setNombreUsuario(usuarioDto.getNombreUsuario());
+//        user.setContrasena(passwordEncoder.encode(usuarioDto.getContrasena()));
         user.setContrasena(usuarioDto.getContrasena());
-        user.setCodigoUsuario(usuarioDto.getCodigoUsuario());
-        user.setTiempoMora(usuarioDto.getTiempoMora());
-        user.setCantidadMora(usuarioDto.getCantidadMora());
         TipoUsuarios tp = tipoUsuarioRepository.findByNombre("ALUMNO");
         user.setTipoUsuariosList(Arrays.asList(tp));
         usuarioRepository.save(user);
@@ -71,11 +72,7 @@ public class UsuarioServiceImpl implements UsuarioService {
             Usuario usuarioDto = Usuario.builder()
                     .idUsuario(usuario.getId())
                     .nombreUsuario(usuario.getNombreUsuario())
-                    .codigoUsuario(usuario.getCodigoUsuario())
                     .contrasena(usuario.getContrasena())
-                    .tiempoMora(usuario.getTiempoMora())
-                    .cantidadMora(usuario.getCantidadMora())
-//                    .tipoUsuario(usuario.getTipoUsuario())
                     .build();
 
             return usuarioDto;
@@ -86,11 +83,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         UsuarioDto usuarioDto = UsuarioDto.builder()
                 .id(usuario.getIdUsuario())
                 .nombreUsuario(usuario.getNombreUsuario())
-                .codigoUsuario(usuario.getCodigoUsuario())
                 .contrasena(usuario.getContrasena())
-                .tiempoMora(usuario.getTiempoMora())
-                .cantidadMora(usuario.getCantidadMora())
-//                .tipoUsuario(usuario.getTipoUsuario())
                 .build();
 
         return usuarioDto;

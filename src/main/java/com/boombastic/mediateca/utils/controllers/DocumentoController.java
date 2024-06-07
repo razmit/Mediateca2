@@ -1,9 +1,6 @@
 package com.boombastic.mediateca.utils.controllers;
-import com.boombastic.mediateca.utils.dtos.CDDto;
 import com.boombastic.mediateca.utils.dtos.DocumentoDto;
-import com.boombastic.mediateca.utils.models.CD;
 import com.boombastic.mediateca.utils.models.Documento;
-import com.boombastic.mediateca.utils.services.CDService;
 import com.boombastic.mediateca.utils.services.DocumentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +21,16 @@ import java.util.List;
 public class DocumentoController {
     private DocumentoService documentoService;
 
-//    @Autowired
-//    public DocumentoController(DocumentoService documentoService) {
-//        this.documentoService = documentoService;
-//    }
+    @Autowired
+    public DocumentoController(DocumentoService documentoService) {
+        this.documentoService = documentoService;
+    }
 
     @GetMapping("/documentos")
     public String listDocumentos(Model model){
         List<DocumentoDto> docs = documentoService.listAlldocumentos();
         model.addAttribute("docs", docs);
-        return "docs-list";
+        return "general-docs";
     }
 
     @GetMapping("/docs/{docId}")

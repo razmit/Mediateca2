@@ -26,7 +26,7 @@ public class Usuario {
     )
     private List<TipoUsuarios> tipoUsuariosList = new ArrayList<>();
     private String contrasena;
-    private int cantidadMora;
-    private int tiempoMora;
-    private String codigoUsuario;
+
+    @OneToMany(mappedBy = "idUsuario")
+    private List<MoraUsuario> moras = new ArrayList<>();
 }

@@ -12,6 +12,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
 //    @Query("SELECT u from Usuario u WHERE ");
 
+    Usuario findFirstByNombreUsuario(String nombreUsuario);
     Usuario findByNombreUsuario(String nombreUsuario);
     Usuario findByContrasena(String contrasena);
 

@@ -12,8 +12,4 @@ public class UsuarioDto {
     private String nombreUsuario;
     @NotEmpty(message = "Llene el form de nombre de contraseña")
     private String contrasena;
-    private int tiempoMora;
-    private int cantidadMora;
-    @NotEmpty(message = "Llene el form de nombre de código")
-    private String codigoUsuario;
 }

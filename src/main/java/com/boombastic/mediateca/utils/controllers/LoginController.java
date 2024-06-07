@@ -10,7 +10,7 @@ public class LoginController {
 
     private UsuarioService usuarioService;
     @Autowired
-    public LoginController(UsuarioService usuarioService) {this.usuarioService = usuarioService;}
+    public LoginController(UsuarioService usuarioService) {usuarioService = usuarioService;}
 
     @GetMapping("/login")
     public String loginPage(){
