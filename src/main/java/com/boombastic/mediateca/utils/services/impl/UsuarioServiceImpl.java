@@ -44,8 +44,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     public void saveUser(UsuarioDto usuarioDto) {
         Usuario user = new Usuario();
         user.setNombreUsuario(usuarioDto.getNombreUsuario());
-//        user.setContrasena(passwordEncoder.encode(usuarioDto.getContrasena()));
-        user.setContrasena(usuarioDto.getContrasena());
+        user.setContrasena(passwordEncoder.encode(usuarioDto.getContrasena()));
         TipoUsuarios tp = tipoUsuarioRepository.findByNombre("ALUMNO");
         user.setTipoUsuariosList(Arrays.asList(tp));
         usuarioRepository.save(user);

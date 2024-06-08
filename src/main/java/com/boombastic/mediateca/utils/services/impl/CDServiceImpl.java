@@ -1,12 +1,18 @@
 package com.boombastic.mediateca.utils.services.impl;
 
 import com.boombastic.mediateca.utils.dtos.CDDto;
+import com.boombastic.mediateca.utils.dtos.UsuarioDto;
 import com.boombastic.mediateca.utils.models.CD;
+import com.boombastic.mediateca.utils.models.Documento;
+import com.boombastic.mediateca.utils.models.TipoUsuarios;
+import com.boombastic.mediateca.utils.models.Usuario;
 import com.boombastic.mediateca.utils.repository.CDRepository;
+import com.boombastic.mediateca.utils.repository.DocumentoRepository;
 import com.boombastic.mediateca.utils.services.CDService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -15,6 +21,7 @@ import java.util.stream.Collectors;
 public class CDServiceImpl implements CDService {
 
     private CDRepository cdRepository;
+    private DocumentoRepository documentoRepository;
 
     @Autowired
     public CDServiceImpl(CDRepository cdRepository) {
@@ -28,7 +35,15 @@ public class CDServiceImpl implements CDService {
     }
 
     @Override
-    public void saveCD(CD cd) {
+    public void saveCD(CDDto cdDto) {
+
+        CD cd = new CD();
+        cd.setArtista(cdDto.getArtista());
+        cd.setGenero(cdDto.getGenero());
+        cd.setDuracion(cdDto.getDuracion());
+        cd.setNumCanciones(cdDto.getNumCanciones());
+        Documento documento = documentoRepository.findFirstByTitulo(cdDto.getDocumento().getTitulo());
+        cd.setDocumento(documento);
         cdRepository.save(cd);
     }
 

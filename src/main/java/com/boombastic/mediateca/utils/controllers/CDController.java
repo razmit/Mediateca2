@@ -49,8 +49,8 @@ public class CDController {
     }
 
     @PostMapping("/documentos/cds/new")
-    public String saveCD(@ModelAttribute("cd") CD cd) {
-        cdService.saveCD(cd);
+    public String saveCD(@ModelAttribute("cd") CDDto cdDto) {
+        cdService.saveCD(cdDto);
         return "redirect:/cds";
     }
 

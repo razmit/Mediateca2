@@ -16,4 +16,6 @@ public interface DocumentoRepository extends JpaRepository<Documento, Long> {
 //            "LEFT JOIN md.materia mat")
     @Query("SELECT d, m FROM Documento d LEFT JOIN d.docMateriaList m")
     List<Documento> findAllDocumentosWithDetails();
+
+    Documento findFirstByTitulo(String titulo);
 }
