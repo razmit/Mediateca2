@@ -3,7 +3,7 @@ package com.boombastic.mediateca.utils.services.impl;
 
 import com.boombastic.mediateca.utils.dtos.DVDDto;
 import com.boombastic.mediateca.utils.models.DVD;
-import com.boombastic.mediateca.utils.services.DvdService;
+import com.boombastic.mediateca.utils.services.DVDService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

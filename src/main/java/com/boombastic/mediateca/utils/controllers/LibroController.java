@@ -50,7 +50,7 @@ public class LibroController {
 
     @GetMapping("/libros/{libroId}/edit")
     public String editLibroForm(@PathVariable("libroId") Long libroId, org.springframework.ui.Model model) {
-        LibroDto libroDto = libroService.findLibroById(libroId);
+        Libro libroDto = libroService.findLibroById(libroId);
         model.addAttribute("libroDto", libroDto);
         return "libros-edit";
     }
