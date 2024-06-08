@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 07-06-2024 a las 01:22:51
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: 127.0.0.1
+-- Generation Time: Jun 08, 2024 at 08:10 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `mediateca`
+-- Database: `mediateca`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cdaudio`
+-- Table structure for table `cdaudio`
 --
 
 CREATE TABLE `cdaudio` (
@@ -37,7 +37,7 @@ CREATE TABLE `cdaudio` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `cdaudio`
+-- Dumping data for table `cdaudio`
 --
 
 INSERT INTO `cdaudio` (`idCdAudio`, `idDocumento`, `artista`, `genero`, `duracion`, `numCanciones`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `cdaudio` (`idCdAudio`, `idDocumento`, `artista`, `genero`, `duracio
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `documentos`
+-- Table structure for table `documentos`
 --
 
 CREATE TABLE `documentos` (
@@ -62,7 +62,7 @@ CREATE TABLE `documentos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `documentos`
+-- Dumping data for table `documentos`
 --
 
 INSERT INTO `documentos` (`idDocumento`, `idTipoDocumento`, `titulo`, `autor`, `anoPublicacion`, `ubicacionFisica`, `cantidadDisponible`, `estado`, `fechaAdquisicion`) VALUES
@@ -72,7 +72,18 @@ INSERT INTO `documentos` (`idDocumento`, `idTipoDocumento`, `titulo`, `autor`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `dvd`
+-- Table structure for table `documento_materia`
+--
+
+CREATE TABLE `documento_materia` (
+  `doc_id` bigint(20) NOT NULL,
+  `materia_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dvd`
 --
 
 CREATE TABLE `dvd` (
@@ -86,7 +97,7 @@ CREATE TABLE `dvd` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `libro`
+-- Table structure for table `libro`
 --
 
 CREATE TABLE `libro` (
@@ -100,7 +111,7 @@ CREATE TABLE `libro` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materias`
+-- Table structure for table `materias`
 --
 
 CREATE TABLE `materias` (
@@ -111,7 +122,7 @@ CREATE TABLE `materias` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `materiasdocumentos`
+-- Table structure for table `materiasdocumentos`
 --
 
 CREATE TABLE `materiasdocumentos` (
@@ -123,7 +134,20 @@ CREATE TABLE `materiasdocumentos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `prestamos`
+-- Table structure for table `morausuario`
+--
+
+CREATE TABLE `morausuario` (
+  `idMora` bigint(20) NOT NULL,
+  `cantidadMora` int(11) NOT NULL,
+  `tiempoMora` int(11) NOT NULL,
+  `idUsuario` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `prestamos`
 --
 
 CREATE TABLE `prestamos` (
@@ -133,13 +157,13 @@ CREATE TABLE `prestamos` (
   `fechaPrestamo` date DEFAULT NULL,
   `fechaDevolucion` date DEFAULT NULL,
   `estado` varchar(255) NOT NULL,
-  `mora` decimal(10,2) DEFAULT 0.00
+  `mora` decimal(38,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `revista`
+-- Table structure for table `revista`
 --
 
 CREATE TABLE `revista` (
@@ -154,7 +178,7 @@ CREATE TABLE `revista` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tesis`
+-- Table structure for table `tesis`
 --
 
 CREATE TABLE `tesis` (
@@ -168,7 +192,7 @@ CREATE TABLE `tesis` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipodocumento`
+-- Table structure for table `tipodocumento`
 --
 
 CREATE TABLE `tipodocumento` (
@@ -177,7 +201,7 @@ CREATE TABLE `tipodocumento` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tipodocumento`
+-- Dumping data for table `tipodocumento`
 --
 
 INSERT INTO `tipodocumento` (`idTipoDocumento`, `nombreTipo`) VALUES
@@ -189,16 +213,27 @@ INSERT INTO `tipodocumento` (`idTipoDocumento`, `nombreTipo`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tipousuarios`
+-- Table structure for table `tipos_usuarios`
+--
+
+CREATE TABLE `tipos_usuarios` (
+  `user_id` bigint(20) NOT NULL,
+  `userType_id` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tipousuarios`
 --
 
 CREATE TABLE `tipousuarios` (
-  `idTipoUsuario` int(11) NOT NULL,
+  `idTipoUsuario` bigint(20) NOT NULL,
   `nombre` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `tipousuarios`
+-- Dumping data for table `tipousuarios`
 --
 
 INSERT INTO `tipousuarios` (`idTipoUsuario`, `nombre`) VALUES
@@ -209,59 +244,69 @@ INSERT INTO `tipousuarios` (`idTipoUsuario`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
-  `idUsuario` bigint(11) NOT NULL,
-  `nombreUsuario` varchar(255) DEFAULT NULL,
-  `idTipoUsuario` int(11) DEFAULT NULL,
-  `contrasena` varchar(100) DEFAULT NULL,
-  `cantidadMora` int(11) NOT NULL,
-  `tiempoMora` int(11) NOT NULL,
-  `codigoUsuario` varchar(100) NOT NULL
+  `idUsuario` bigint(20) NOT NULL,
+  `contrasena` varchar(255) DEFAULT NULL,
+  `nombreUsuario` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Índices para tablas volcadas
+-- Dumping data for table `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuario`, `contrasena`, `nombreUsuario`) VALUES
+(1, '$2a$12$mEwJTUODKcMvIuW0YIk4HO.hlQ0W/1T3/q2QoZuFylQRTmdZE37J6', 'jimmy');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cdaudio`
+-- Indexes for table `cdaudio`
 --
 ALTER TABLE `cdaudio`
   ADD PRIMARY KEY (`idCdAudio`),
   ADD KEY `idDocumento` (`idDocumento`);
 
 --
--- Indices de la tabla `documentos`
+-- Indexes for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD PRIMARY KEY (`idDocumento`),
   ADD KEY `ID_Tipo_Documento` (`idTipoDocumento`);
 
 --
--- Indices de la tabla `dvd`
+-- Indexes for table `documento_materia`
+--
+ALTER TABLE `documento_materia`
+  ADD KEY `FKgt0cgj50nlxldumfa8vr6kmn5` (`materia_id`),
+  ADD KEY `FK1sqngkt21jard6g9xqoiklj85` (`doc_id`);
+
+--
+-- Indexes for table `dvd`
 --
 ALTER TABLE `dvd`
   ADD PRIMARY KEY (`idDVD`),
   ADD KEY `ID_Documento` (`idDocumento`);
 
 --
--- Indices de la tabla `libro`
+-- Indexes for table `libro`
 --
 ALTER TABLE `libro`
   ADD PRIMARY KEY (`idLibro`),
   ADD KEY `ID_Documento` (`idDocumento`);
 
 --
--- Indices de la tabla `materias`
+-- Indexes for table `materias`
 --
 ALTER TABLE `materias`
   ADD PRIMARY KEY (`idMateria`);
 
 --
--- Indices de la tabla `materiasdocumentos`
+-- Indexes for table `materiasdocumentos`
 --
 ALTER TABLE `materiasdocumentos`
   ADD PRIMARY KEY (`idMateriaDocumento`),
@@ -269,7 +314,14 @@ ALTER TABLE `materiasdocumentos`
   ADD KEY `materia_fk` (`idMateria`);
 
 --
--- Indices de la tabla `prestamos`
+-- Indexes for table `morausuario`
+--
+ALTER TABLE `morausuario`
+  ADD PRIMARY KEY (`idMora`),
+  ADD KEY `FK4jvtlicty4uh76say775scint` (`idUsuario`);
+
+--
+-- Indexes for table `prestamos`
 --
 ALTER TABLE `prestamos`
   ADD PRIMARY KEY (`idPrestamo`),
@@ -277,173 +329,198 @@ ALTER TABLE `prestamos`
   ADD KEY `ID_Documento` (`idDocumento`);
 
 --
--- Indices de la tabla `revista`
+-- Indexes for table `revista`
 --
 ALTER TABLE `revista`
   ADD PRIMARY KEY (`idRevista`),
   ADD KEY `ID_Documento` (`idDocumento`);
 
 --
--- Indices de la tabla `tesis`
+-- Indexes for table `tesis`
 --
 ALTER TABLE `tesis`
   ADD PRIMARY KEY (`idTesis`),
   ADD KEY `ID_Documento` (`idDocumento`);
 
 --
--- Indices de la tabla `tipodocumento`
+-- Indexes for table `tipodocumento`
 --
 ALTER TABLE `tipodocumento`
   ADD PRIMARY KEY (`idTipoDocumento`);
 
 --
--- Indices de la tabla `tipousuarios`
+-- Indexes for table `tipos_usuarios`
+--
+ALTER TABLE `tipos_usuarios`
+  ADD KEY `FKf2x4dw1vwlw4qofr5pnbxgyp2` (`userType_id`),
+  ADD KEY `FKrjnfn5eb2wq6mph4fw2mr3rxc` (`user_id`);
+
+--
+-- Indexes for table `tipousuarios`
 --
 ALTER TABLE `tipousuarios`
   ADD PRIMARY KEY (`idTipoUsuario`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`idUsuario`),
-  ADD KEY `idTipoUsuario` (`idTipoUsuario`);
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cdaudio`
+-- AUTO_INCREMENT for table `cdaudio`
 --
 ALTER TABLE `cdaudio`
   MODIFY `idCdAudio` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `documentos`
+-- AUTO_INCREMENT for table `documentos`
 --
 ALTER TABLE `documentos`
   MODIFY `idDocumento` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `dvd`
+-- AUTO_INCREMENT for table `dvd`
 --
 ALTER TABLE `dvd`
   MODIFY `idDVD` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `libro`
+-- AUTO_INCREMENT for table `libro`
 --
 ALTER TABLE `libro`
   MODIFY `idLibro` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `materias`
+-- AUTO_INCREMENT for table `materias`
 --
 ALTER TABLE `materias`
   MODIFY `idMateria` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `materiasdocumentos`
+-- AUTO_INCREMENT for table `materiasdocumentos`
 --
 ALTER TABLE `materiasdocumentos`
   MODIFY `idMateriaDocumento` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `prestamos`
+-- AUTO_INCREMENT for table `morausuario`
+--
+ALTER TABLE `morausuario`
+  MODIFY `idMora` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `prestamos`
 --
 ALTER TABLE `prestamos`
   MODIFY `idPrestamo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `revista`
+-- AUTO_INCREMENT for table `revista`
 --
 ALTER TABLE `revista`
   MODIFY `idRevista` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tesis`
+-- AUTO_INCREMENT for table `tesis`
 --
 ALTER TABLE `tesis`
   MODIFY `idTesis` bigint(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tipodocumento`
+-- AUTO_INCREMENT for table `tipodocumento`
 --
 ALTER TABLE `tipodocumento`
   MODIFY `idTipoDocumento` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT de la tabla `tipousuarios`
+-- AUTO_INCREMENT for table `tipousuarios`
 --
 ALTER TABLE `tipousuarios`
-  MODIFY `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idTipoUsuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuario` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idUsuario` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `cdaudio`
+-- Constraints for table `cdaudio`
 --
 ALTER TABLE `cdaudio`
   ADD CONSTRAINT `cdaudio_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`);
 
 --
--- Filtros para la tabla `documentos`
+-- Constraints for table `documentos`
 --
 ALTER TABLE `documentos`
   ADD CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`idTipoDocumento`) REFERENCES `tipodocumento` (`idTipoDocumento`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Filtros para la tabla `dvd`
+-- Constraints for table `documento_materia`
+--
+ALTER TABLE `documento_materia`
+  ADD CONSTRAINT `FK1sqngkt21jard6g9xqoiklj85` FOREIGN KEY (`doc_id`) REFERENCES `documentos` (`idDocumento`),
+  ADD CONSTRAINT `FKgt0cgj50nlxldumfa8vr6kmn5` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`idMateria`);
+
+--
+-- Constraints for table `dvd`
 --
 ALTER TABLE `dvd`
   ADD CONSTRAINT `dvd_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`);
 
 --
--- Filtros para la tabla `libro`
+-- Constraints for table `libro`
 --
 ALTER TABLE `libro`
   ADD CONSTRAINT `libro_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`);
 
 --
--- Filtros para la tabla `materiasdocumentos`
+-- Constraints for table `materiasdocumentos`
 --
 ALTER TABLE `materiasdocumentos`
   ADD CONSTRAINT `materiasdocumentos_ibfk_1` FOREIGN KEY (`idMateria`) REFERENCES `materias` (`idMateria`),
   ADD CONSTRAINT `materiasdocumentos_ibfk_2` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`);
 
 --
--- Filtros para la tabla `prestamos`
+-- Constraints for table `morausuario`
 --
-ALTER TABLE `prestamos`
-  ADD CONSTRAINT `prestamos_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `prestamos_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `morausuario`
+  ADD CONSTRAINT `FK4jvtlicty4uh76say775scint` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`idUsuario`);
 
 --
--- Filtros para la tabla `revista`
+-- Constraints for table `prestamos`
+--
+ALTER TABLE `prestamos`
+  ADD CONSTRAINT `prestamos_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `revista`
 --
 ALTER TABLE `revista`
   ADD CONSTRAINT `revista_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`);
 
 --
--- Filtros para la tabla `tesis`
+-- Constraints for table `tesis`
 --
 ALTER TABLE `tesis`
   ADD CONSTRAINT `tesis_ibfk_1` FOREIGN KEY (`idDocumento`) REFERENCES `documentos` (`idDocumento`);
 
 --
--- Filtros para la tabla `usuarios`
+-- Constraints for table `tipos_usuarios`
 --
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`idTipoUsuario`) REFERENCES `tipousuarios` (`idTipoUsuario`) ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE `tipos_usuarios`
+  ADD CONSTRAINT `FKf2x4dw1vwlw4qofr5pnbxgyp2` FOREIGN KEY (`userType_id`) REFERENCES `tipousuarios` (`idTipoUsuario`),
+  ADD CONSTRAINT `FKrjnfn5eb2wq6mph4fw2mr3rxc` FOREIGN KEY (`user_id`) REFERENCES `usuarios` (`idUsuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
