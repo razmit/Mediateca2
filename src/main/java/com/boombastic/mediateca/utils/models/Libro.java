@@ -22,6 +22,9 @@ public class Libro {
     @ManyToOne
     @JoinColumn(name = "idDocumento", nullable = false)
     private Documento idDocumento;
+    private String titulo;
+    private String autor;
+    private String genero;
     private String isbn;
     private String editorial;
     private int numPaginas;

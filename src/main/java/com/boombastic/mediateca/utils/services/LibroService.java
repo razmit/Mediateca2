@@ -8,9 +8,9 @@ import java.util.List;
 @Service
 public interface LibroService {
 
-    List<LibroDto> listAllLibros();
+    List<Libro> listAllLibros();
 
-    LibroDto findLibroById(Long libroId);
+    Libro findLibroById(Long libroId);
 
     void saveLibro(Libro libro);
 
