@@ -34,34 +34,34 @@ public class CDController {
         return "cds-list";
     }
 
-    @GetMapping("/cds/{cdId}")
+    @GetMapping("/documentos/cds/{cdId}")
     public String cdDetail(@PathVariable("cdId") Long cdId, Model model){
         CDDto cdDto = cdService.findCDById(cdId);
         model.addAttribute("cd", cdDto);
         return "cd-detail";
     }
 
-    @GetMapping("/cds/new")
+    @GetMapping("/documentos/cds/new")
     public String createCDForm(Model model) {
         CD cd = new CD();
         model.addAttribute("cd", cd);
         return "cds-create";
     }
 
-    @PostMapping("/cds/new")
+    @PostMapping("/documentos/cds/new")
     public String saveCD(@ModelAttribute("cd") CD cd) {
         cdService.saveCD(cd);
         return "redirect:/cds";
     }
 
-    @GetMapping("/cds/{cdId}/edit")
+    @GetMapping("/documentos/cds/{cdId}/edit")
     public String editCDForm(@PathVariable("cdId") Long cdId, Model model) {
         CDDto cdDto = cdService.findCDById(cdId);
         model.addAttribute("cdDto", cdDto);
         return "cds-edit";
     }
 
-    @PostMapping("/cds/{cdId}/edit")
+    @PostMapping("/documentos/cds/{cdId}/edit")
     public String updateCD(@PathVariable("cdId") Long cdId,
                            @Valid @ModelAttribute("cd") CDDto cdDto,
                            BindingResult result,
@@ -77,7 +77,7 @@ public class CDController {
         return "redirect:/cds";
     }
 
-    @GetMapping("/cds/{cdId}/delete")
+    @GetMapping("/documentos/cds/{cdId}/delete")
     public String deleteCD(@PathVariable("cdId") Long cdId) {
         cdService.delete(cdId);
         return "redirect:/cds";

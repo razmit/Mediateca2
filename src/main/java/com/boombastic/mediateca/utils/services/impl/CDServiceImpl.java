@@ -28,8 +28,8 @@ public class CDServiceImpl implements CDService {
     }
 
     @Override
-    public CD saveCD(CD cd) {
-        return cdRepository.save(cd);
+    public void saveCD(CD cd) {
+        cdRepository.save(cd);
     }
 
     @Override
