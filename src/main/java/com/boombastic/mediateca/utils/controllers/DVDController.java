@@ -14,15 +14,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
-
 import java.util.List;
 
 @Controller
 public class DVDController {
 
     private DVDService dvdService;
-
 
     @Autowired
     public DVDController(DVDService dvdService) {
@@ -51,7 +48,7 @@ public class DVDController {
     }
 
     @PostMapping("/dvds/new")
-    public String saveDvd(@ModelAttribute("dvd") DVD dvd) {
+    public String saveDvd(@ModelAttribute("dvd") DVDDto dvd) {
         dvdService.saveDvd(dvd);
         return "redirect:/dvds";
     }

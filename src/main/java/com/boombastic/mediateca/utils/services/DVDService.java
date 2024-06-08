@@ -1,9 +1,7 @@
 package com.boombastic.mediateca.utils.services;
 
 import java.util.List;
-
 import com.boombastic.mediateca.utils.dtos.DVDDto;
-import com.boombastic.mediateca.utils.models.DVD;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +16,5 @@ public interface DVDService
 
     void delete(Long dvdId);
 
-    void saveDvd(DVD dvd);
+    void saveDvd(DVDDto dvd);
 }
