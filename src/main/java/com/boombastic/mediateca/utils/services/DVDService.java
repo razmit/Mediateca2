@@ -1,22 +1,22 @@
 package com.boombastic.mediateca.utils.services;
 
-import com.boombastic.mediateca.utils.dtos.CDDto;
-import com.boombastic.mediateca.utils.dtos.DVDDto;
-import com.boombastic.mediateca.utils.dtos.UsuarioDto;
-import com.boombastic.mediateca.utils.models.CD;
-import com.boombastic.mediateca.utils.models.DVD;
-import com.boombastic.mediateca.utils.models.Usuario;
-
 import java.util.List;
 
-public interface DVDService {
+import com.boombastic.mediateca.utils.dtos.DVDDto;
+import com.boombastic.mediateca.utils.models.DVD;
+import jakarta.validation.Valid;
+import org.springframework.stereotype.Service;
 
-    List<DVDDto> listAllDVDs();
-    DVD saveDVD(DVD dvd);
+@Service
+public interface DvdService 
+{
+    List<DVDDto> listAllDvds();
 
-    DVDDto findDVDById(Long dvdId);
+    DVDDto findDvdById(Long dvdId);
 
-    void updateDVD(DVDDto dvdDto);
+    void updateDvd(@Valid DVDDto dvdDto);
 
     void delete(Long dvdId);
+
+    void saveDvd(DVD dvd);
 }
