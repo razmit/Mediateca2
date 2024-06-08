@@ -17,6 +17,10 @@ public class DocumentoMateria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idMateriaDocumento;
-    private Long idDocumento;
-    private Long idMateria;
+    @ManyToOne
+    @JoinColumn(name = "idDocumento", nullable = false)
+    private Documento documento;
+    @ManyToOne
+    @JoinColumn(name = "idMateria", nullable = false)
+    private Materia materia;
 }

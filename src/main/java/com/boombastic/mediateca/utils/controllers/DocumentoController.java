@@ -6,8 +6,6 @@ import com.boombastic.mediateca.utils.services.CDService;
 import com.boombastic.mediateca.utils.services.DocumentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.Banner;
-import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,25 +14,22 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.print.Doc;
 import java.util.List;
 
 @Controller
 public class DocumentoController {
     private DocumentoService documentoService;
-    private CDService cdService;
 
     @Autowired
-    public DocumentoController(DocumentoService documentoService, CDService cdService) {
+    public DocumentoController(DocumentoService documentoService) {
         this.documentoService = documentoService;
-        this.cdService = cdService;
     }
 
     @GetMapping("/documentos")
     public String listDocumentos(Model model){
-        List<CDDto> cds = cdService.listAllCDs();
-        model.addAttribute("cds", cds);
-        return "general-docs";
+        List<DocumentoDto> docs = documentoService.getDocumentos();
+        model.addAttribute("docs", docs);
+        return "docs-list";
     }
 
     @GetMapping("/docs/{docId}")

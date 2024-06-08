@@ -20,6 +20,6 @@ public class TipoDocumento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idTipoDocumento;
     private String nombreTipo;
-    @OneToMany(mappedBy = "idTipoDocumento")
+    @OneToMany(mappedBy = "tipoDocumento")
     private List<Documento> documentos;
 }

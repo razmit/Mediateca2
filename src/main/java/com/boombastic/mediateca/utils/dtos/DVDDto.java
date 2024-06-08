@@ -1,5 +1,6 @@
 package com.boombastic.mediateca.utils.dtos;
 
+import com.boombastic.mediateca.utils.models.Documento;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.Data;
 public class DVDDto {
 
     private Long id;
-    private Long idDocumento;
+    private Documento documento;
     @NotBlank(message = "Rellene el form de director")
     private String director;
     private String genero;

@@ -22,7 +22,7 @@ public class Documento {
     private Long idDocumento;
     @ManyToOne
     @JoinColumn(name = "idTipoDocumento", nullable = false)
-    private TipoDocumento idTipoDocumento;
+    private TipoDocumento tipoDocumento;
     private String titulo;
     private String autor;
     private int anoPublicacion;
@@ -47,5 +47,6 @@ public class Documento {
             joinColumns = {@JoinColumn(name = "doc_id", referencedColumnName = "idDocumento")},
             inverseJoinColumns = {@JoinColumn(name = "materia_id", referencedColumnName = "idMateria")}
     )
+//    @OneToMany(mappedBy = "documento")
     private List<Materia> docMateriaList = new ArrayList<>();
 }

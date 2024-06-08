@@ -22,5 +22,5 @@ public class Materia {
     private Long idMateria;
     private String nombre;
     @ManyToMany(mappedBy = "docMateriaList")
-    private List<Documento> documentos = new ArrayList<>();
+    private List<Documento> documentoMateriasList = new ArrayList<>();
 }
