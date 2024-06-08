@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+cds-list.html<!DOCTYPE html>
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -6,7 +6,7 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>Documentos</title>
+    <title>CDs</title>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -14,7 +14,7 @@
     <section layout:fragment="body" class="py-5">
         <div class="container px-5 my-5">
             <div class="text-center mb-5">
-                <h1 class="fw-bolder">Préstamos y búsquedas</h1>
+                <h1 class="fw-bolder">Préstamos y búsquedas de CDs*</h1>
                 <p class="lead fw-normal text-muted mb-0"><a th:href="@{/devoluciones}">¿Listo para devolver? ¡Presiona acá!</a></p>
             </div>
             <div class="row gx-5">
@@ -22,19 +22,19 @@
                     <div class="position-relative mb-5">
                         <a th:text="${cd.documento.titulo}" class="h3 fw-bolder text-decoration-none link-dark stretched-link" href="#!">Project name</a>
                     </div>
-<!--                    <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}/edit(usuarioId=${usuario.id})}">Editar</a>-->
-<!--                    <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}(usuarioId=${usuario.id})}">Detalles</a>-->
+                    <!--                    <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}/edit(usuarioId=${usuario.id})}">Editar</a>-->
+                    <!--                    <a class="btn btn-warning" th:href="@{/usuarios/{usuarioId}(usuarioId=${usuario.id})}">Detalles</a>-->
                 </div>
             </div>
-<!--            <div class="row gx-5">-->
-<!--                <table>-->
-<!--                    <thead>-->
-<!--                        <tr>-->
-<!--                            <th></th>-->
-<!--                        </tr>-->
-<!--                    </thead>-->
-<!--                </table>-->
-<!--            </div>-->
+            <!--            <div class="row gx-5">-->
+            <!--                <table>-->
+            <!--                    <thead>-->
+            <!--                        <tr>-->
+            <!--                            <th></th>-->
+            <!--                        </tr>-->
+            <!--                    </thead>-->
+            <!--                </table>-->
+            <!--            </div>-->
         </div>
     </section>
 

@@ -1,6 +1,8 @@
 package com.boombastic.mediateca.utils.controllers;
+import com.boombastic.mediateca.utils.dtos.CDDto;
 import com.boombastic.mediateca.utils.dtos.DocumentoDto;
 import com.boombastic.mediateca.utils.models.Documento;
+import com.boombastic.mediateca.utils.services.CDService;
 import com.boombastic.mediateca.utils.services.DocumentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,18 @@ import java.util.List;
 @Controller
 public class DocumentoController {
     private DocumentoService documentoService;
+    private CDService cdService;
 
     @Autowired
-    public DocumentoController(DocumentoService documentoService) {
+    public DocumentoController(DocumentoService documentoService, CDService cdService) {
         this.documentoService = documentoService;
+        this.cdService = cdService;
     }
 
     @GetMapping("/documentos")
     public String listDocumentos(Model model){
-        List<DocumentoDto> docs = documentoService.listAlldocumentos();
-        model.addAttribute("docs", docs);
+        List<CDDto> cds = cdService.listAllCDs();
+        model.addAttribute("cds", cds);
         return "general-docs";
     }
 
@@ -49,7 +53,7 @@ public class DocumentoController {
 
     @PostMapping("/docs/new")
     public String saveDocumento(@ModelAttribute("doc") Documento documento) {
-        documentoService.savedocs((Doc) documento);
+        documentoService.savedocs((Documento) documento);
         return "redirect:/cds";
     }
 

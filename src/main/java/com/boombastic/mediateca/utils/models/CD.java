@@ -19,7 +19,7 @@ public class CD {
     private Long idCdAudio;
     @ManyToOne
     @JoinColumn(name = "idDocumento", nullable = false)
-    private Documento idDocumento;
+    private Documento documento;
     private String artista;
     private String genero;
     private int duracion;

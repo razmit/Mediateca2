@@ -31,7 +31,7 @@ public class Documento {
     private String estado;
     private String fechaAdquisicion;
 
-    @OneToMany(mappedBy = "idDocumento")
+    @OneToMany(mappedBy = "documento", cascade = CascadeType.ALL)
     private List<CD> cds = new ArrayList<>();
     @OneToMany(mappedBy = "idDocumento")
     private List<DVD> dvds = new ArrayList<>();

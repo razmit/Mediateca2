@@ -27,7 +27,7 @@ public class CDController {
         this.cdService = cdService;
     }
 
-    @GetMapping("/cds")
+    @GetMapping("/documentos/cds")
     public String listCDs(Model model){
         List<CDDto> cds = cdService.listAllCDs();
         model.addAttribute("cds", cds);

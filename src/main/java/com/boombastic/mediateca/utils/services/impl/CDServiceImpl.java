@@ -25,7 +25,9 @@ public class CDServiceImpl implements CDService {
 
     @Override
     public List<CDDto> listAllCDs() {
-        return List.of();
+
+        List<CD> cds = cdRepository.getAllCDs();
+        return cds.stream().map((cd) -> mapToCDDto(cd)).collect(Collectors.toList());
     }
 
     @Override
@@ -46,5 +48,19 @@ public class CDServiceImpl implements CDService {
     @Override
     public void delete(Long cdId) {
 
+    }
+
+    public CDDto mapToCDDto(CD cd) {
+
+        CDDto cdDto = CDDto.builder()
+                .id(cd.getIdCdAudio())
+                .documento(cd.getDocumento())
+                .artista(cd.getArtista())
+                .duracion(cd.getDuracion())
+                .genero(cd.getGenero())
+                .numCanciones(cd.getNumCanciones())
+                .build();
+
+        return cdDto;
     }
 }

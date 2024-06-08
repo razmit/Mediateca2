@@ -10,5 +10,4 @@ public interface DocumentoRepository extends JpaRepository<Documento, Long> {
 
     Optional<Documento> findById(Long aLong);
 
-//    @Query("select d from Documento d WHERE d.titulo");
 }
