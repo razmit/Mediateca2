@@ -49,18 +49,18 @@ public class LibroServiceImpl implements LibroService {
     }
 
     private Libro mapToLibroDto(Libro libro) {
-        return LibroDto.builder()
-                .id(libro.getIdLibro())
-                .idDocumento(libro.getIdDocumento().getIdDocumento())
-                .titulo(libro.getTitulo())
-                .autor(libro.getAutor())
-                .genero(libro.getGenero())
-                .isbn(libro.getIsbn())
-                .editorial(libro.getEditorial())
-                .numPaginas(libro.getNumPaginas())
-                .build();
+//        return LibroDto.builder()
+//                .id(libro.getIdLibro())
+//                .idDocumento(libro.getIdDocumento().getIdDocumento())
+//                .titulo(libro.getTitulo())
+//                .autor(libro.getAutor())
+//                .genero(libro.getGenero())
+//                .isbn(libro.getIsbn())
+//                .editorial(libro.getEditorial())
+//                .numPaginas(libro.getNumPaginas())
+//                .build();
 
-
+    return null;
 
     }
     private Libro mapToLibro(LibroDto libroDto) {

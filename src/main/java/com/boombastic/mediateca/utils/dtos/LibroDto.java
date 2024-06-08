@@ -7,11 +7,9 @@ import lombok.Data;
 
 @Data
 @Builder
-public class LibroDto extends Libro {
+public class LibroDto {
 
     private Long id;
-
-
     private Long idDocumento;
     private String titulo;
     private String autor;

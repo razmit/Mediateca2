@@ -30,8 +30,8 @@ public class LibroController {
 
     @GetMapping("/libros")
     public String listLibros(org.springframework.ui.Model model){
-        List<LibroDto> libros = libroService.listAllLibros();
-        model.addAttribute("libros", libros);
+//        List<LibroDto> libros = libroService.listAllLibros();
+//        model.addAttribute("libros", libros);
         return "usuarios-list";
     }
 
@@ -63,8 +63,8 @@ public class LibroController {
                               BindingResult result, org.springframework.ui.Model model){
 
         if (result.hasErrors()) {
-            libroDto = libroService.findLibroById(libroId);
-            model.addAttribute("libroDto", libroDto);
+//            libroDto = libroService.findLibroById(libroId);
+//            model.addAttribute("libroDto", libroDto);
             return "libros-edit";
         }
 
