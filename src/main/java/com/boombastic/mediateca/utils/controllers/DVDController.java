@@ -3,7 +3,7 @@ package com.boombastic.mediateca.utils.controllers;
 
 import com.boombastic.mediateca.utils.dtos.DVDDto;
 import com.boombastic.mediateca.utils.models.DVD;
-import com.boombastic.mediateca.utils.services.DvdService;
+import com.boombastic.mediateca.utils.services.DVDService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.util.List;
 
 @Controller
-public class DvdController {
+public class DVDController {
 
-    private DvdService dvdService;
+    private DVDService dvdService;
 
 
     @Autowired
-    public DvdController(DvdService dvdService) {
+    public DVDController(DVDService dvdService) {
         this.dvdService = dvdService;
     }
 

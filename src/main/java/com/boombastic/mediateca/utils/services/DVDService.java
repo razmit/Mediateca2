@@ -8,7 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface DvdService 
+public interface DVDService
 {
     List<DVDDto> listAllDvds();
 
