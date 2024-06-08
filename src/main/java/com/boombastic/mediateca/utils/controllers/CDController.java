@@ -80,6 +80,6 @@ public class CDController {
     @GetMapping("/documentos/cds/{cdId}/delete")
     public String deleteCD(@PathVariable("cdId") Long cdId) {
         cdService.delete(cdId);
-        return "redirect:/cds";
+        return "redirect:/documentos/cds";
     }
 }

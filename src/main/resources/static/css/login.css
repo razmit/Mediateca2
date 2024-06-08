@@ -1,6 +1,9 @@
 .main {
     padding: 0px 10px;
-    background-color: #E5E5E5;
+}
+
+body {
+    background-color: #EAEAE9;
 }
 
 @media screen and (max-width: 450px) {
