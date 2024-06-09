@@ -13,10 +13,10 @@ layout:decorate="~{layout}"
     <!-- Page Content-->
     <section layout:fragment="body" class="py-5">
         <div class="container">
-            <form role="form" method="post" th:action="@{/usuarios/new}" th:object="${usuario}" class="row g-3">
+            <form role="form" method="post" th:action="@{/documentos/cds/new}" th:object="${cd}" class="row g-3">
                 <div class="col-md-6">
                     <label for="inputNombreUsuario" class="form-label">Nombre de usuario</label>
-                    <input type="text" name="nombreUsuario" th:field="*{nombreUsuario}" class="form-control" id="inputNombreUsuario">
+                    <input type="text" name="nombreUsuario" th:field="*{    nombreUsuario}" class="form-control" id="inputNombreUsuario">
                 </div>
                 <div class="col-md-6">
                     <label for="inputContrasena" class="form-label">Contraseña</label>

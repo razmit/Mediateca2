@@ -22,6 +22,33 @@
                 </div>
 
             </div>
+            <div class="row gx-5 my-4">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header text-center">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                Otras categorías de documentos
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body d-flex flex-wrap justify-content-between">
+                                <a th:href="@{/documentos/cds}"
+                                   class="btn btn-outline-secondary btn-lg rounded-square me-2"
+                                   style="width: 10rem;">CDs</a>
+                                <a th:href="@{/documentos}"
+                                   class="btn btn-outline-dark rounded-square me-2"
+                                   style="width: 10rem; ">DVDs</a>
+                                <a class="btn btn-outline-info rounded-square me-2"
+                                   style="width: 10rem;">Libros</a>
+                                <a class="btn btn-outline-primary rounded-square me-2"
+                                   style="width: 10rem;">Revistas</a>
+                                <a class="btn btn-outline-warning rounded-square me-2"
+                                   style="width: 10rem;">Tesis</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row gx-5">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover">
