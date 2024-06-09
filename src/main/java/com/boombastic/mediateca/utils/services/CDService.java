@@ -10,6 +10,7 @@ import java.util.List;
 public interface CDService {
 
     List<CDDto> listAllCDs();
+    CDDto getCD();
     void saveCD(CDDto cdDto);
 
     CDDto findCDById(Long cdId);

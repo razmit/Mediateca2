@@ -1,8 +1,10 @@
 package com.boombastic.mediateca.utils.controllers;
 
 import com.boombastic.mediateca.utils.dtos.CDDto;
+import com.boombastic.mediateca.utils.dtos.DocumentoDto;
 import com.boombastic.mediateca.utils.models.CD;
 import com.boombastic.mediateca.utils.services.CDService;
+import com.boombastic.mediateca.utils.services.DocumentoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
@@ -10,10 +12,7 @@ import org.springframework.data.repository.cdi.Eager;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,10 +20,12 @@ import java.util.List;
 public class CDController {
 
     private CDService cdService;
+    private DocumentoService documentoService;
 
     @Autowired
-    public CDController(CDService cdService) {
+    public CDController(CDService cdService, DocumentoService documentoService) {
         this.cdService = cdService;
+        this.documentoService = documentoService;
     }
 
     @GetMapping("/documentos/cds")
@@ -45,13 +46,16 @@ public class CDController {
     public String createCDForm(Model model) {
         CD cd = new CD();
         model.addAttribute("cd", cd);
+
+        List<DocumentoDto> documentoDto = documentoService.getDocumentos();
+        model.addAttribute("documento", documentoDto);
         return "cds-create";
     }
 
     @PostMapping("/documentos/cds/new")
-    public String saveCD(@ModelAttribute("cd") CDDto cdDto) {
+    public String saveCD(@ModelAttribute("cd") CDDto cdDto, @RequestParam("selectedDoc") Long selectedDoc) {
         cdService.saveCD(cdDto);
-        return "redirect:/cds";
+        return "redirect:/documentos/cds";
     }
 
     @GetMapping("/documentos/cds/{cdId}/edit")

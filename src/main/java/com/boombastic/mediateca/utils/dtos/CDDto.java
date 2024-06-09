@@ -13,9 +13,9 @@ public class CDDto {
 
     private Long id;
     private Documento documento;
-    @NotEmpty(message = "Llene el form de nombre de artista")
+//    @NotEmpty(message = "Llene el form de nombre de artista")
     private String artista;
-    @NotEmpty(message = "Llene el form de nombre de genero")
+//    @NotEmpty(message = "Llene el form de nombre de genero")
     private String genero;
     private int duracion;
     private int numCanciones;

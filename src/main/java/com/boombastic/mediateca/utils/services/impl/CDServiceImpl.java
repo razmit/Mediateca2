@@ -35,6 +35,11 @@ public class CDServiceImpl implements CDService {
     }
 
     @Override
+    public CDDto getCD() {
+        return null;
+    }
+
+    @Override
     public void saveCD(CDDto cdDto) {
 
         CD cd = new CD();

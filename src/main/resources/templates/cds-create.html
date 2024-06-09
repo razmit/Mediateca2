@@ -33,7 +33,7 @@ layout:decorate="~{layout}"
                 <div class="col-md-12">
 <!--                    <label for=selectedDoc" class="form-label">Seleccione el documento relacionado</label>-->
                     <select class="form-select" th:name="selectedDoc" aria-label="Seleccione el documento relacionado" name="selectedDocu" id="selectedDoc">
-                        <option th:each="doc : ${documento}" th:value="${doc.idDocumento}">[[doc.titulo]]</option>
+                        <option th:each="doc : ${documento}" th:value="${doc.id}"> [[doc.titulo]] </option>
                     </select>
                 </div>
 
