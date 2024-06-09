@@ -6,7 +6,7 @@ layout:decorate="~{layout}"
     >
     <head>
     <meta charset="UTF-8">
-    <title>Crear usuario</title>
+    <title>Crear CD</title>
 </head>
 <body class="d-flex flex-column h-100">
 <main class="flex-shrink-0">
@@ -15,13 +15,28 @@ layout:decorate="~{layout}"
         <div class="container">
             <form role="form" method="post" th:action="@{/documentos/cds/new}" th:object="${cd}" class="row g-3">
                 <div class="col-md-6">
-                    <label for="inputNombreUsuario" class="form-label">Nombre de usuario</label>
-                    <input type="text" name="nombreUsuario" th:field="*{    nombreUsuario}" class="form-control" id="inputNombreUsuario">
+                    <label for="artistaTxt" class="form-label">Artista</label>
+                    <input type="text" name="artista" th:field="*{artista}" class="form-control" id="artistaTxt">
                 </div>
                 <div class="col-md-6">
-                    <label for="inputContrasena" class="form-label">Contraseña</label>
-                    <input type="password" name="contrasena" th:field="*{contrasena}" class="form-control" id="inputContrasena">
+                    <label for="generoTxt" class="form-label">Género de música</label>
+                    <input type="password" name="genero" th:field="*{genero}" class="form-control" id="generoTxt">
                 </div>
+                <div class="col-md-6">
+                    <label for="duracionTxt" class="form-label">Duración del álbum</label>
+                    <input type="password" name="duracion" th:field="*{duracion}" class="form-control" id="duracionTxt">
+                </div>
+                <div class="col-md-6">
+                    <label for="numCancionesTxt" class="form-label">Número de canciones del álbum</label>
+                    <input type="password" name="numCanciones" th:field="*{numCanciones}" class="form-control" id="numCancionesTxt">
+                </div>
+                <div class="col-md-12">
+<!--                    <label for=selectedDoc" class="form-label">Seleccione el documento relacionado</label>-->
+                    <select class="form-select" th:name="selectedDoc" aria-label="Seleccione el documento relacionado" name="selectedDocu" id="selectedDoc">
+                        <option th:each="doc : ${documento}" th:value="${doc.idDocumento}">[[doc.titulo]]</option>
+                    </select>
+                </div>
+
 <!--                <div class="col-12">-->
 <!--                    <label for="inputMora" class="form-label">Cantidad de mora</label>-->
 <!--                    <input type="number" name="cantidadMora" th:field="*{cantidadMora}" class="form-control" id="inputMora">-->
